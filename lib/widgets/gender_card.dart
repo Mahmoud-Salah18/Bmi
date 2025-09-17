@@ -9,10 +9,12 @@ class GenderCard extends StatelessWidget {
     required this.color,
     required this.onTap,
   });
+
   final String title;
   final IconData icon;
   final Color color;
   final Function() onTap;
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -20,7 +22,7 @@ class GenderCard extends StatelessWidget {
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
-            color: AppColors.secondaryColor,
+            color: color,  
             borderRadius: BorderRadius.circular(10),
           ),
           child: Column(

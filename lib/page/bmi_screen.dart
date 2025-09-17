@@ -31,17 +31,21 @@ class _BmiScreenState extends State<BmiScreen> {
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
-          spacing: 10,
           children: [
             MaleAndFemale(),
+            const SizedBox(height: 10),
             HeightUi(),
+            const SizedBox(height: 10),
             weightAndAge(),
+            const SizedBox(height: 10),
             MainButton(
               onTap: () {
                 double result = weight / (height * height * 0.0001);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ResultScreen(result:result)),
+                  MaterialPageRoute(
+                    builder: (context) => ResultScreen(result: result),
+                  ),
                 );
               },
             ),
@@ -103,27 +107,33 @@ class _BmiScreenState extends State<BmiScreen> {
   Expanded MaleAndFemale() {
     return Expanded(
       child: Row(
-        spacing: 10,
         children: [
-          GenderCard(
-            title: "Male",
-            icon: Icons.male,
-            color: isMale ? AppColors.primaryColor : AppColors.secondaryColor,
-            onTap: () {
-              setState(() {
-                isMale = true;
-              });
-            },
+          Expanded(
+            child: GenderCard(
+              title: "Male",
+              icon: Icons.male,
+              color: isMale ? AppColors.primaryColor : AppColors.secondaryColor,
+              onTap: () {
+                setState(() {
+                  isMale = true;
+                });
+              },
+            ),
           ),
-          GenderCard(
-            title: "Female",
-            icon: Icons.female,
-            color: !isMale ? AppColors.primaryColor : AppColors.secondaryColor,
-            onTap: () {
-              setState(() {
-                isMale = false;
-              });
-            },
+          const SizedBox(width: 10),
+          Expanded(
+            child: GenderCard(
+              title: "Female",
+              icon: Icons.female,
+              color: !isMale
+                  ? AppColors.primaryColor
+                  : AppColors.secondaryColor,
+              onTap: () {
+                setState(() {
+                  isMale = false;
+                });
+              },
+            ),
           ),
         ],
       ),
